@@ -75,9 +75,9 @@ if(userid != null && entry != null) {
 <%
         int month, year;
 
-        rs = null; //st.executeQuery("SELECT MonthName(Str_To_Date(MONTH(datetime), '%m')) mont, month(datetime) mon, YEAR(datetime) as yea, " +
-			//"count(datetime) as countArticlesInMonth FROM jspBlog WHERE userid='" + userid + "'" +
-			//"GROUP BY YEAR(datetime), MONTH(datetime) ORDER BY YEAR(datetime), MONTH(datetime)");
+        rs = st.executeQuery("SELECT to_char(to_timestamp (date_part('month', datetime)::text, 'MM'), 'Month') mont, date_part('month',datetime) mon, date_part('year',datetime) as yea, " +
+			"count(datetime) as countArticlesInMonth FROM jspBlog WHERE userid='" + userid + "'" +
+			"GROUP BY date_part('year',datetime), date_part('month',datetime) ORDER BY date_part('year',datetime), date_part('month',datetime)");
 %>
             </td>
             <td style="width:180px;border:1px solid #e0e0e0">

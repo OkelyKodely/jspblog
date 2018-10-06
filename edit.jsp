@@ -43,10 +43,19 @@ if(userid != null && password != null) {
 	ResultSet rs = st.executeQuery("select id from jspBlogUsers where id = '" + userid + "' and password = '" + password + "'");
 	String title = request.getParameter("title");
 	String content = request.getParameter("content");
+        String did = "";
+        did = request.getParameter("did");
+        if(did == null)
+            did = "";
 	if(title != null) {
             title = title.replace("'","''");
             content = content.replace("'","''");
-            st.execute("update jspBlog set title = '" + title + "', content = '" + content + "' where id = " + entry);
+            Statement st2 = conn.createStatement();
+            st2.execute("update jspBlog set title = '" + title + "', content = '" + content + "' where id = " + entry);
+        } else if(!did.equals("")) {
+            Statement st2 = conn.createStatement();
+            st2.execute("delete from jspBlog where id = " + did);
+            response.sendRedirect("login.jsp");
         }
 	if(rs.next()) {
             session.setAttribute("userid", userid);
@@ -94,7 +103,9 @@ if(userid != null && password != null) {
 
 	</table>
     </form>
+    <form method="post" action="edit.jsp" onsubmit="if(confirm('Want to delete?')){return true;}else{return false;}"><input type="hidden" name="did" value="<%=entry%>">&nbsp;&nbsp;<input type="submit" style="color:red;" value="Delete"></form>
 </div>
+<br>
 
         <%@ include file="footer.jsp" %>
 

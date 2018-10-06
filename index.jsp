@@ -40,7 +40,7 @@ if(userid != null) {
     if(mon == null || year == null) {
             rs1 = st1.executeQuery("SELECT * FROM jspBlog WHERE userid='" + userid + "' ORDER BY id DESC");
     } else {
-            rs1 = st1.executeQuery("SELECT * FROM jspBlog WHERE YEAR(datetime)=" + year + " AND MONTH(datetime)=" + mon + " AND userid='" + userid + "' ORDER BY id DESC");
+            rs1 = st1.executeQuery("SELECT * FROM jspBlog WHERE date_part('year',datetime)=" + year + " AND date_part('month',datetime)=" + mon + " AND userid='" + userid + "' ORDER BY id DESC");
     }
 
     Statement st = conn.createStatement();
@@ -87,10 +87,9 @@ if(userid != null) {
     }
 
     Statement st2 = conn.createStatement();
-    ResultSet rs2 = null;
-                        //st2.executeQuery("SELECT MonthName(Str_To_Date(MONTH(datetime), '%m')) mont, month(datetime) mon, YEAR(datetime) as yea, " +
-                           //         "count(datetime) as countArticlesInMonth FROM jspBlog WHERE user='" + userid + "'" +
-                             //       "GROUP BY YEAR(datetime), MONTH(datetime) ORDER BY YEAR(datetime), MONTH(datetime)");
+    ResultSet rs2 = st2.executeQuery("SELECT to_char(to_timestamp (date_part('month', datetime)::text, 'MM'), 'Month') mont, date_part('month',datetime) mon, date_part('year',datetime) as yea, " +
+			"count(datetime) as countArticlesInMonth FROM jspBlog WHERE userid='" + userid + "'" +
+			"GROUP BY date_part('year',datetime), date_part('month',datetime) ORDER BY date_part('year',datetime), date_part('month',datetime)");
 %>
             </td>
             <td style="width:180px;border:1px solid #e0e0e0">

@@ -112,7 +112,7 @@ while(rs.next()) {
 %>
 				<tr>
 					<td>
-						<a href="index.jsp?userid=<%=userid%>&id=<%=rs.getString("id")%>"><%=rs.getString("id")%></a>
+						<a href="entry.jsp?userid=<%=userid%>&id=<%=rs.getString("id")%>"><%=rs.getString("id")%></a>
 					</td>
 					<td>
 						<a href="edit.jsp?id=<%=rs.getString("id")%>"><%=rs.getString("title")%></a>
