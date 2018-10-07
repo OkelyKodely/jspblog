@@ -64,7 +64,7 @@ if(userid != null && password != null) {
 
 <form method="post" action="new.jsp">
 		<table class="table table-striped">
-			<tr><td><h1>Dashboard</h1></td></tr>
+			<tr><td><h1>New Blog Entry</h1></td></tr>
 			<tr><td>Go <a href="login.jsp">back</a> to the main page of the Dashboard.</td></tr>
 				<tr>
 					<td>

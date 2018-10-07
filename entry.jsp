@@ -48,7 +48,7 @@ if(userid != null && entry != null) {
     ResultSet rs1 = st.executeQuery("SELECT * FROM jspBlogDesign WHERE userid = '" + userid + "'");
     if(rs1.next()) {
 %>
-    <a href="index.jsp?userid=<%=userid%>"><img src="<%=rs1.getString("banner")%>" width="100%" style="position:relative;bottom:20px;"></a>
+    <center><a href="index.jsp?userid=<%=userid%>"><img src="<%=rs1.getString("banner")%>" style="position:relative;bottom:20px;"></a></center>
 <%
     }
 %>

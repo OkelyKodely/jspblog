@@ -49,11 +49,11 @@ if(userid != null && password != null) {
 
 		<table class="table table-striped">
 			<thead>
-				<tr><td><h1>Dashboard</h1></td></tr>
+				<tr><td><h1>Manage Blog</h1></td></tr>
 				<tr>
 					<th colspan="3">You are now logged in to your Dashboard.  Visit your <a href="index.jsp?userid=<%=userid%>">blog</a>.</th>
 				</tr>
-				<tr><td><a href="new.jsp"><button type="button" class="btn btn-default">New</button></a></td></tr>
+				<tr><td><a href="new.jsp"><button type="button" class="btn btn-default">New Blog Entry</button></a></td></tr>
 <%
 String bannr = request.getParameter("banner");
 if(bannr != null) {

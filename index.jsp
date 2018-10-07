@@ -47,7 +47,7 @@ if(userid != null) {
     ResultSet rs = st.executeQuery("SELECT * FROM jspBlogDesign WHERE userid = '" + userid + "'");
     if(rs.next()) {
 %>
-    <a href="index.jsp?userid=<%=userid%>"><img src="<%=rs.getString("banner")%>" width="100%" style="position:relative;bottom:20px;"></a>
+    <center><a href="index.jsp?userid=<%=userid%>"><img src="<%=rs.getString("banner")%>" style="position:relative;bottom:20px;"></a></center>
 <%
     }
 %>
@@ -108,6 +108,24 @@ if(userid != null) {
             </td>
 	</tr>
     </table>
+<%
+} else {
+%>
+<br>
+<table cellpadding="10">
+<tr>
+<td>&nbsp;</td>
+<td>
+<font size="3">
+JSP BLOG is a free blog creator for anyone who registers with us for free and is open to the internet community.
+<br><br>
+Try us out now and start blogging right away!
+</font>
+</td>
+</tr>
+</table>
+<br>
+<br>
 <%
 }
 
